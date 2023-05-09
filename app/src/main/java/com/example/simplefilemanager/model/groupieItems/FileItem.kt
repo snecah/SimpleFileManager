@@ -9,7 +9,8 @@ import com.xwray.groupie.viewbinding.BindableItem
 import java.io.File
 
 
-class FileItem(val file: File, val onDirectoryItemClicked: (File) -> Unit) : BindableItem<FileItemBinding>() {
+class FileItem(val file: File, val onDirectoryItemClicked: (File) -> Unit) :
+    BindableItem<FileItemBinding>() {
 
     override fun bind(viewBindig: FileItemBinding, position: Int) {
         viewBindig.apply {
@@ -17,9 +18,9 @@ class FileItem(val file: File, val onDirectoryItemClicked: (File) -> Unit) : Bin
             fileType.text = file.extension
             fileSize.text = file.length().toDouble().toString()
 
-            if(file.isDirectory) {
+            if (file.isDirectory) {
                 fileImage.setImageResource(R.drawable.baseline_folder_24)
-                fileImage.setOnClickListener {
+                fileItemBlock.setOnClickListener {
                     onDirectoryItemClicked(file)
                 }
             } else {
@@ -37,6 +38,6 @@ class FileItem(val file: File, val onDirectoryItemClicked: (File) -> Unit) : Bin
 
     override fun getLayout(): Int = R.layout.file_item
 
-    override fun initializeViewBinding(view: View): FileItemBinding  = FileItemBinding.bind(view)
+    override fun initializeViewBinding(view: View): FileItemBinding = FileItemBinding.bind(view)
 
 }
