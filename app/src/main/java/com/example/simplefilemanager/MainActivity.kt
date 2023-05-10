@@ -11,13 +11,8 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import by.kirich1409.viewbindingdelegate.viewBinding
-import com.example.simplefilemanager.databinding.ActivityMainBinding
-import com.example.simplefilemanager.model.groupieItems.FileItem
 import com.example.simplefilemanager.ui.FilesListFragment
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.xwray.groupie.GroupAdapter
-import com.xwray.groupie.GroupieViewHolder
 import java.io.File
 
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
@@ -40,13 +35,10 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
                 ),
                 READ_WRITE_EXTERNAL_STORAGE_PERMISSION_CODE
             )
-            Toast.makeText(this, "perm granted first time", Toast.LENGTH_LONG).show()
-
         } else {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R && !Environment.isExternalStorageManager())
                 showAndroid11PlusPermissionDialog()
             // Permission has already been granted
-            Toast.makeText(this, "all permission granted", Toast.LENGTH_LONG).show()
         }
 
         val fragmentTransaction = supportFragmentManager.beginTransaction()

@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/file_item_block"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginLeft="5sp"
-    android:layout_marginTop="5sp"
-    android:layout_marginRight="5sp"
-    android:layout_marginBottom="5sp"
+    android:layout_marginStart="3dp"
+    android:layout_marginBottom="3dp"
     app:cardBackgroundColor="#FAF5F5"
-    android:id="@+id/file_item_block">
+    app:cardCornerRadius="25dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -18,10 +16,12 @@
 
         <ImageView
             android:id="@+id/file_image"
-            android:layout_width="110sp"
-            android:layout_height="90sp"
+            android:layout_width="100dp"
+            android:layout_height="65dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_launcher_foreground"
@@ -38,33 +38,32 @@
             android:textAlignment="center"
             android:textSize="22sp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/file_image"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/file_type"
-            android:layout_width="0dp"
+            android:id="@+id/last_modified_date"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="4dp"
             android:layout_marginEnd="16dp"
+            android:text="Creation date"
             android:textAlignment="center"
-            android:text="File type"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/file_image"
             app:layout_constraintTop_toBottomOf="@+id/file_name" />
 
         <TextView
             android:id="@+id/file_size"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="4dp"
             android:layout_marginEnd="16dp"
-            android:textAlignment="center"
             android:text="File size"
+            android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/file_type"
-            app:layout_constraintStart_toStartOf="@id/file_type"/>
+            app:layout_constraintTop_toBottomOf="@+id/file_name" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>
