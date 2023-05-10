@@ -32,7 +32,7 @@ class Utils {
         )
 
         val audioExtensions = listOf<String>("aac", "flac", "m4a", "mp3", "oga", "wav", "wma")
-        val textExtensions = listOf<String>("txt", "csv", "rtf", "odt", "md")
+        val textExtensions = listOf<String>("txt", "csv", "rtf", "odt", "md", "doc", "docx")
         val imageExtensions = listOf<String>("bmp", "gif", "jpeg", "jpg", "png", "tif", "tiff", "svg")
         const val pdfExtension = "pdf"
 

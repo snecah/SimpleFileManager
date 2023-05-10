@@ -15,15 +15,12 @@ import java.io.File
 class FilesListViewModel : ViewModel() {
     private val _fileGroupiesItems = MutableLiveData<List<FileItem>>()
     val fileGroupiesItems: LiveData<List<FileItem>> = _fileGroupiesItems
-    lateinit var selectedFilePath: String
 
     val onDirectoryItemClickedEvent = Channel<String>()
 
     fun fetchContent(path: String?) {
         if (path == null) {
             val rootDir = Environment.getExternalStorageDirectory()
-//            _fileGroupiesItems.value =
-//                rootDir.listFiles()?.map { FileItem(it, onDirectoryItemClicked()) }
             _fileGroupiesItems.value = rootDir.listFiles()?.map {
                 FileItem(
                     FileData(

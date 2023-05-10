@@ -5,6 +5,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
+import android.os.Bundle
 import android.os.Environment
 import android.provider.Settings
 import android.widget.Toast
@@ -17,12 +18,9 @@ import java.io.File
 
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
-    private val rootDir: File = Environment.getExternalStorageDirectory()
-
     companion object {
         private const val READ_WRITE_EXTERNAL_STORAGE_PERMISSION_CODE = 1
     }
-
     override fun onStart() {
         super.onStart()
         if (checkReadExternalStoragePermission()) {
@@ -40,29 +38,11 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
                 showAndroid11PlusPermissionDialog()
             // Permission has already been granted
         }
-
         val fragmentTransaction = supportFragmentManager.beginTransaction()
         val fragment = FilesListFragment.newInstance()
         fragmentTransaction.replace(R.id.fragment_container, fragment)
         fragmentTransaction.commit()
     }
-
-
-//    private fun showFilesInDirectory(rootDir: File) {
-//        if (rootDir.listFiles().isNullOrEmpty()) {
-//            val fileItemList = rootDir.listFiles()!!.map { FileItem(it, onDirectoryItemClicked()) }
-//            adapter.update(fileItemList)
-//            Toast.makeText(applicationContext, "empty directory", Toast.LENGTH_LONG).show()
-//        } else {
-//            val fileItemList = rootDir.listFiles()!!.map { FileItem(it, onDirectoryItemClicked()) }
-//            adapter.update(fileItemList)
-//        }
-//    }
-
-
-//    private fun onDirectoryItemClicked(): (File) -> Unit = { selectedDirectory ->
-//        showFilesInDirectory(selectedDirectory)
-//    }
 
     private fun checkReadExternalStoragePermission(): Boolean {
         return (PermissionsManager().checkSelfPermission(
