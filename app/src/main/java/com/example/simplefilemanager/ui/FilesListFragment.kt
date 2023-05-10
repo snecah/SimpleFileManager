@@ -1,11 +1,13 @@
 package com.example.simplefilemanager.ui
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.example.simplefilemanager.MainActivity
 import com.example.simplefilemanager.R
 import com.example.simplefilemanager.databinding.FragmentFilesListBinding
 import com.xwray.groupie.GroupAdapter
@@ -38,11 +40,9 @@ class FilesListFragment : Fragment(R.layout.fragment_files_list) {
 
     private fun navigationEventEnter() {
         lifecycleScope.launch {
-            val newDirectory = viewModel.onDirectoryItemClickedEvent.receive()
-            val fragmentTransaction = activity?.supportFragmentManager?.beginTransaction()
-            fragmentTransaction?.replace(R.id.fragment_container, newInstance(newDirectory))
-            fragmentTransaction?.addToBackStack(null)
-            fragmentTransaction?.commit()
+            val newDirectoryPath = viewModel.onDirectoryItemClickedEvent.receive()
+            Log.e("@@@","receieve chanel $newDirectoryPath")
+            (activity as MainActivity).navigateToDirectory(newDirectoryPath)
         }
     }
 

@@ -8,6 +8,7 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.provider.Settings
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
@@ -38,9 +39,14 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
                 showAndroid11PlusPermissionDialog()
             // Permission has already been granted
         }
+    }
+
+    fun navigateToDirectory(path: String) {
+        Log.e("@@@","navigateToDirectory $path")
         val fragmentTransaction = supportFragmentManager.beginTransaction()
-        val fragment = FilesListFragment.newInstance()
+        val fragment = FilesListFragment.newInstance(path)
         fragmentTransaction.replace(R.id.fragment_container, fragment)
+        fragmentTransaction.addToBackStack(null)
         fragmentTransaction.commit()
     }
 
