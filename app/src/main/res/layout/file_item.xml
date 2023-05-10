@@ -35,8 +35,8 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:text="File Name"
-            android:textColor="@color/black"
             android:textAlignment="center"
+            android:textColor="@color/black"
             android:textSize="22sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -51,8 +51,8 @@
             android:layout_marginTop="4dp"
             android:layout_marginEnd="16dp"
             android:text="Creation date"
-            android:textColor="@color/black"
             android:textAlignment="center"
+            android:textColor="@color/black"
             app:layout_constraintStart_toEndOf="@+id/file_image"
             app:layout_constraintTop_toBottomOf="@+id/file_name" />
 
@@ -63,9 +63,9 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="4dp"
             android:layout_marginEnd="16dp"
-            android:textColor="@color/black"
             android:text="File size"
             android:textAlignment="center"
+            android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/file_name" />
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -12,7 +12,7 @@ class FileItem(val fileData: FileData, val onDirectoryItemClicked: (String) -> U
 
     override fun bind(viewBindig: FileItemBinding, position: Int) {
         viewBindig.apply {
-            fileName.text = fileData.fileName
+            if (fileData.fileName.isEmpty()) fileName.text = fileData.fileName
             lastModifiedDate.text = fileData.lastModifiedDate
             fileSize.text = if (fileData.isDirectory) "" else fileData.fileSize
 

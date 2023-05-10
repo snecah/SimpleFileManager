@@ -12,8 +12,7 @@ class PermissionsManager {
     }
 
     fun requestPermissions(
-        activity: Activity?, permissions: Array<String?>,
-        requestCode: Int
+        activity: Activity?, permissions: Array<String?>, requestCode: Int
     ) {
         if (activity == null) {
             return

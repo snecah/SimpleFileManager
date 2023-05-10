@@ -21,10 +21,6 @@ class FilesListFragment : Fragment(R.layout.fragment_files_list) {
     private val viewModel by viewModels<FilesListViewModel>()
 
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val path = arguments?.getString(FILE_PATH)
@@ -36,12 +32,26 @@ class FilesListFragment : Fragment(R.layout.fragment_files_list) {
 
         }
 
+        with(binding) {
+            sortByDateButton.setOnClickListener {
+                viewModel.sortByDate()
+            }
+
+            sortBySizeButton.setOnClickListener {
+                viewModel.sortBySize()
+            }
+
+            sortByExtensionButton.setOnClickListener {
+                viewModel.sortByExtension()
+            }
+        }
+
     }
 
     private fun navigationEventEnter() {
         lifecycleScope.launch {
             val newDirectoryPath = viewModel.onDirectoryItemClickedEvent.receive()
-            Log.e("@@@","receieve chanel $newDirectoryPath")
+            Log.e("@@@", "receieve chanel $newDirectoryPath")
             (activity as MainActivity).navigateToDirectory(newDirectoryPath)
         }
     }
